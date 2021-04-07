@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "581620576380",
+    "project_id": "fiitgn-workouts",
+    "storage_bucket": "fiitgn-workouts.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:581620576380:android:cfaeff7b4fb8f88519d9f9",
+        "android_client_info": {
+          "package_name": "com.example.fiitgn_workouts_1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "581620576380-edl924cub8eesbkoeltqi150fttsen05.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCTSlRPsWAy1gY0GgwIzo9Cad3nV0L258"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "581620576380-edl924cub8eesbkoeltqi150fttsen05.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
