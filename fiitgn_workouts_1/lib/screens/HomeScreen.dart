@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../models/Exercise_db_model.dart';
 import 'package:provider/provider.dart';
+import '../models/Admin_db_model.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -8,22 +9,44 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  var isInit = true;
+  List<AdminDbModel> listOfAdminsFromDb = [];
   List<ExerciseDbModel> listOfExerciseFromDb = [];
-
   @override
-  void initState() {
-    super.initState();
-    final exerciseDataProvider =
-        Provider.of<GetDataFromGoogleSheetProvider>(context);
-
-    exerciseDataProvider.getListOfExercises();
-    listOfExerciseFromDb = exerciseDataProvider.listExercises;
+  void didChangeDependencies() async {
+    print("dependencies were changed");
+    if (isInit) {
+      final exerciseDataProvider =
+          Provider.of<GetDataFromGoogleSheetProvider>(context);
+      final adminDataProvider =
+          Provider.of<GetAdminDataFromGoogleSheetProvider>(context);
+      await exerciseDataProvider.getListOfExercises();
+      print("b");
+      await adminDataProvider.getListOfAdmins();
+      print("a");
+      listOfExerciseFromDb = exerciseDataProvider.listExercises;
+      listOfAdminsFromDb = adminDataProvider.listAdmin;
+    }
+    // TODO: implement didChangeDependencies
+    super.didChangeDependencies();
+    isInit = false;
   }
+
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   final exerciseDataProvider =
+  //       Provider.of<GetDataFromGoogleSheetProvider>(context);
+
+  //   exerciseDataProvider.getListOfExercises();
+  //   listOfExerciseFromDb = exerciseDataProvider.listExercises;
+  // }
   // TODO: implement initState
 
   @override
   Widget build(BuildContext context) {
     print(listOfExerciseFromDb);
+    print(listOfAdminsFromDb);
     return Scaffold(
       appBar: AppBar(
         title: Text('HomePage'),

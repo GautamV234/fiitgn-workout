@@ -1,9 +1,8 @@
 import 'package:provider/provider.dart';
-
 import './screens/HomeScreen.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import './models/Exercise_db_model.dart';
+import './models/Admin_db_model.dart';
 
 void main() {
   runApp(MyApp());
@@ -17,6 +16,9 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider.value(
           value: GetDataFromGoogleSheetProvider(),
+        ),
+        ChangeNotifierProvider.value(
+          value: GetAdminDataFromGoogleSheetProvider(),
         ),
       ],
       child: MaterialApp(
