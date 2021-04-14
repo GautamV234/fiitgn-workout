@@ -11,12 +11,16 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final databaseReference = Firestore.instance;
+  List data = [];
   void getData() {
     databaseReference
         .collection("Workouts")
         .getDocuments()
         .then((QuerySnapshot snapshot) {
-      snapshot.documents.forEach((f) => print('${f.data}}'));
+      snapshot.documents.forEach((f) {
+        data.add(f.data);
+        print('${f.data}}');
+      });
     });
   }
 
@@ -28,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
     print("dependencies were changed");
     if (isInit) {
       final exerciseDataProvider =
-          Provider.of<GetDataFromGoogleSheetProvider>(context);
+          Provider.of<GetExerciseDataFromGoogleSheetProvider>(context);
       final adminDataProvider =
           Provider.of<GetAdminDataFromGoogleSheetProvider>(context);
       await exerciseDataProvider.getListOfExercises();

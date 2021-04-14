@@ -15,8 +15,8 @@ class AdminDbModel {
 
   factory AdminDbModel.fromJson(dynamic json) {
     return AdminDbModel(
-        emailId: "${json['id']}",
-        uniqueId: "${json['url']}",
+        emailId: "${json['email id']}",
+        uniqueId: "${json['unique id']}",
         name: "${json['name']}");
   }
 
@@ -39,6 +39,18 @@ class GetAdminDataFromGoogleSheetProvider with ChangeNotifier {
           jsonFeedback.map((json) => AdminDbModel.fromJson(json)).toList();
       notifyListeners();
     });
+  }
+
+  List getAdminEmailIds() {
+    print(_listAdmin[0].name);
+    List adminEmailIds = [];
+    _listAdmin.forEach(
+      (element) {
+        adminEmailIds.add(element.emailId);
+      },
+    );
+    print(adminEmailIds);
+    return adminEmailIds;
   }
 
   List<AdminDbModel> get listAdmin {

@@ -36,7 +36,7 @@ class ExerciseDbModel {
       };
 }
 
-class GetDataFromGoogleSheetProvider with ChangeNotifier {
+class GetExerciseDataFromGoogleSheetProvider with ChangeNotifier {
   List<ExerciseDbModel> _listExercises = List<ExerciseDbModel>();
   static const URL =
       "https://script.google.com/macros/s/AKfycbx2H4v8xaSWlnTq3WKaVHw-Z_2eBh6M0yFufxGwm-diDYcKfJPzHZjI9zi23Z1G0YSF/exec";
